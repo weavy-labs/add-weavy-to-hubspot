@@ -1,11 +1,6 @@
 # Add community features to your HubSpot CMS
 Learn how to add chat, feeds, and file-sharing to your site built in HubSpot CMS using Weavy, including pages published as private so you can add community features for your signed-in users.
 
-## Prerequisites
-* You need a Weavy account (https://get.weavy.io/sign-in) with an environment and an API key
-* HubSpot CLI configured (https://developers.hubspot.com/docs/cms/guides/getting-started-with-local-development)
-* For private content and/or SSO, see https://knowledge.hubspot.com/website-pages/require-member-registration-to-access-private-content and https://knowledge.hubspot.com/website-pages/set-up-single-sign-on-sso-to-access-private-content
-
 ## Overview
 The repository is segmented into three sections - chat, feeds, and file-sharing. First, you'll be able to get acquainted with the features you can add to your HubSpot CMS by following our onboarding wizards. Second, you'll dive deeper into integrating HubSpot CMS and Weavy to handle signed-in users.
 
