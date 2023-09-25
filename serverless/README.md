@@ -15,8 +15,8 @@ This serverless function will communicate with your Weavy API and;
 3. Name the JS file `weavy-token`
 4. Set the HTTP method to `GET`
 5. Set the portion part of the URL to `weavy-token`
-6. Copy and paste the code from the `weavy-token.js` file is in this repo
+6. Copy and paste the code from the `weavy-token.js` file in this repo to your newly created file
 7. Replace `{ YOUR WEAVY URL }` and `{ YOUR WEAVY API KEY }` with the information from your environment in your Weavy account
-8. Save
+8. If you run `{ YOUR HUBSPOT SITE URL}/_hcms/api/weavy-token` in your browser, you should get `No UID passed` as a response, that shows your API endpoint is working
 
 
