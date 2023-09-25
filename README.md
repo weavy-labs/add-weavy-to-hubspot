@@ -1,10 +1,29 @@
-# Add community features to your HubSpot site
-Learn how to add chat, feeds, and files to your site built in HubSpot using Weavy, including pages published as private so you can add community features for your logged-in users.
+# Add community features to your HubSpot CMS
+Learn how to add chat, feeds, and file-sharing to your site built in HubSpot CMS using Weavy, including pages published as private so you can add community features for your signed-in users.
 
 ## Prerequisites
 * You need a Weavy account (https://get.weavy.io/sign-in) with an environment and an API key
 * HubSpot CLI configured (https://developers.hubspot.com/docs/cms/guides/getting-started-with-local-development)
 * For private content and/or SSO, see https://knowledge.hubspot.com/website-pages/require-member-registration-to-access-private-content and https://knowledge.hubspot.com/website-pages/set-up-single-sign-on-sso-to-access-private-content
+
+## Overview
+The repository is segmented into three sections - chat, feeds, and file-sharing. First, you'll get acquainted with the features you can add to your HubSpot CMS by following our onboarding wizards.
+
+## Authentication
+After using our onboarding wizards we dive deeper and create a proper integration between HubSpot CMS and Weavy.
+The features from Weavy really come to life when you add them to pages in your HubSpot CMS with audience access. With the Weaavy features, you can create real-time community features for your users, and not just content.
+We achieve this by adding serverless functions in HubSpot CMS to handle authentication between HubSpot CMS and Weavy API.
+
+## How to use this repo
+In each folder, you have two folders containing module code for HubSpot CMS.
+1) Getting started with the feature (chat, feeds, or file-sharing) using our onboarding wizard
+2) Create a proper integration between HubSpot CMS and Weavy for access tokens so you can create a real community experience for your signed-in users.
+
+## For more information
+For more information about Weavy: https://www.weavy.com/docs
+For more information about HubSpot CMS: https://developers.hubspot.com/docs/cms
+
+Make sure to join our awesome community and connect with fellow enthusiasts and the Weavy team on Discord: https://www.weavy.com/discord
 
 ## Get started with chat
 * Ensure you're running <code>hs watch</code> in the background so your files are automatically uploaded to your HubSpot site.
