@@ -20,5 +20,5 @@
   * This field enables you to publish different pages using the same module, but by setting unique app IDs, you can have private chat rooms on each page
 * Copy the contents of the `module.html` file into your module and change the `{ YOUR WEAVY URL}` in the code to the environment URL you have in your Weavy account
   * The code is using the HubL variable `{{ contact.email }}` to get the email of the logged-in user (required)
-* Now create a new web page with Control audience access for the page set to Private; if you've done everything right, you should see a Wevy Chat module that you can drag and drop into your page, and a chat should be rendered
+* Now create a new web page with Control audience access for the page set to Private; if you've done everything right, you should see a Weavy Chat (Auth) module that you can drag and drop into your page, and a chat should be rendered
   * Test to log in and out with different users to see how they can chat with each other.
