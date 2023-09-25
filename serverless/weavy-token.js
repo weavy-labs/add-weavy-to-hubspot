@@ -1,29 +1,133 @@
-// Require axios library to make API requests
-const axios = require('axios');
 
-// This function is executed when a request is made to the endpoint associated with this file in the serverless.json file
-exports.main = ({ accountId }, sendResponse) => {
-  // Use axios to make a GET request to the search API
-  axios
-    .get('https://api.hubapi.com/contentsearch/v2/search', {
-      params: {
-        portalId: accountId,
-        term: 'searchTerm',
+// Get your WEVAY_URL and WEAVY_API from your Weavy account
+const WEAVY_URL = '{ YOUR WEAVY URL }';
+const WEAVY_API = '{ YOUR WEAVY API KEY }';
+
+// Function to get a user token, expires in 3600 seconds.
+function getUserToken (userUid)  {
+  let tokenPromise = fetch (WEAVY_URL + '/api/users/' + userUid + '/tokens', {
+    method: 'POST',
+    headers: {
+        'content-type': 'application/json',
+        'Authorization': 'Bearer ' + WEAVY_API
+    }
+  });
+
+  return tokenPromise;
+}
+
+// Function to init the app we want to create - chat, feeds or files - and add the user as a member to the app.
+function initApp(userUid, appType, appID) {
+  let app = fetch (WEAVY_URL + '/api/apps/init', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + WEAVY_API
+    },
+    body: JSON.stringify({
+      app : {
+        uid : appID,
+        type : appType
       },
+      user : {
+        uid : userUid
+      }
     })
-    .then(function(response) {
-      // Handle success
-      // The console.log statement will appear in the terminal when you run the hs logs CLI command
-      // For full documentation, see: developers.hubspot.com/docs/cms/developer-reference/local-development-cms-cli#logs
-      console.log('Data received from the search API:', response.data);
-      // sendResponse is what you will send back to services hitting your serverless function
-      sendResponse({ body: { response: response.data }, statusCode: 200 });
-    })
-    .catch(function(error) {
-      // Handle error
+  });
+  return app;
+}
 
-      // This is a simple example; error handling typically will be more complicated.
-      // For more information on error handling with axios, see: https://github.com/axios/axios#handling-errors
-      sendResponse({ body: { error: error.message }, statusCode: 500 });
+// Main function
+exports.main = (context, sendResponse) => {
+
+  // Fetch the params to create / update the user
+  let userUid = String(context.params.uid).trim();;
+  let userfirstName = String(context.params.firstname).trim();
+  let userlastName = String(context.params.lastname).trim();
+  let useremail = String(context.params.email).trim();
+
+  // App type and UID for the app we want to create
+  let appType = String(context.params.apptype).trim();
+  let appID = String(context.params.appid).trim();
+
+  // Fetch our wyToken cookie
+  let wyToken =  String(context.headers.Cookie)?.split("; ").find((row) => row.startsWith("wytoken="))?.split("=")[1];
+
+  // If our wyToken cookie is empty, we need set it for the first time and create / update user.
+  if (userUid != null && wyToken == null) {
+
+    // Using the PUT method to update the user, if the user doesn't exist it will be created.
+    let user = fetch (WEAVY_URL + '/api/users/' + userUid, {
+      method: 'PUT',
+      headers: {
+          'content-type': 'application/json',
+          'Authorization': 'Bearer ' + WEAVY_API
+      },
+      body: JSON.stringify({
+        name : userfirstName + ' ' + userlastName,
+        given_name : userfirstName,
+        family_name : userlastName,
+        email : useremail
+      })
     });
+
+    user.then((response) => {
+
+      // Init the app and add the user as a member
+      let app =  initApp(userUid, appType, appID);
+      app.then((response) => {
+
+        // Get user token
+        let tokenPromise = getUserToken(userUid);
+        tokenPromise.then((response) => {
+          const jsonPromise = response.json();
+          jsonPromise.then((json) => {
+            sendResponse(
+              {
+                body : json.access_token,
+                statusCode : 200,
+                headers : {
+                  // Set the wyToken cookie, we don't want to refresh our token for every call
+                  'Set-Cookie': 'wytoken=' + json.access_token + '; Path=/; Max-Age=2592000;'
+                }
+              }
+            );
+          });
+        });
+      });
+    });
+  } else {
+    if (userUid == null) {
+      sendResponse({body: 'No UID passed', statusCode: 400});
+    } else {
+      let app =  initApp(userUid, appType, appID);
+      app.then((response) => {
+        if(response.status==200) {
+          sendResponse(
+            {
+              body : wyToken,
+              statusCode : 200
+            }
+          );
+        } else {
+          // If response is not 200 - the token has expired and we need to get a new.
+          let tokenPromise = getUserToken(userUid);
+          tokenPromise.then((response) => {
+            const jsonPromise = response.json();
+            jsonPromise.then((json) => {
+              sendResponse(
+                {
+                  body : json.access_token,
+                  statusCode : 200,
+                  headers : {
+                    'Set-Cookie': 'wytoken=' + json.access_token + '; Path=/; Max-Age=2592000;'
+                  }
+                }
+              );
+            });
+          });
+        }
+      });
+    }
+  } 
 };
