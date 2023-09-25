@@ -2,7 +2,7 @@
 Learn how to add chat, feeds, and files to your site built in HubSpot using Weavy, including pages published as private so you can add community features for your logged-in users.
 
 ## Prerequisites
-* Your Weavy account (https://get.weavy.io/sign-in) with an environment and an API key
+* You need a Weavy account (https://get.weavy.io/sign-in) with an environment and an API key
 * HubSpot CLI configured (https://developers.hubspot.com/docs/cms/guides/getting-started-with-local-development)
 * For private content and/or SSO, see https://knowledge.hubspot.com/website-pages/require-member-registration-to-access-private-content and https://knowledge.hubspot.com/website-pages/set-up-single-sign-on-sso-to-access-private-content
 
@@ -38,5 +38,4 @@ In the end, your <code>module.html</code> file should look similar to this;
   </script>
 {% end_require_js %}
 ```
-
 * Now create a new web page, and if you've done everything right, you should see a Chat module that you can drag and drop into your page
