@@ -1,7 +1,13 @@
+# Add Chat to your HubSpot CMS
+
+## Prerequisites
+* You need a Weavy account (https://get.weavy.io/sign-in) with an environment and an API key
+* HubSpot CLI configured (https://developers.hubspot.com/docs/cms/guides/getting-started-with-local-development)
+* For private content and/or SSO, see https://knowledge.hubspot.com/website-pages/require-member-registration-to-access-private-content and https://knowledge.hubspot.com/website-pages/set-up-single-sign-on-sso-to-access-private-content
+
 ## Get started with Chat
-
 > **Note:** Ensure you're running <code>hs watch</code> in the background so your files are automatically uploaded to your HubSpot site.
-
+* Start a new Terminal in your IDE (VS Code, etc.)
 * Go to your modules folder and add a new module: <code>hs create module weavy-chat</code>, label it <code>Weavy Chat</code>
 * Select `Page` as the type of content this module be used in
 * Select `N` for is this a global module
