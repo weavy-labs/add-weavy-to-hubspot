@@ -1,4 +1,4 @@
-# Add Chat to your HubSpot CMS with authentication
+# Authentication: Add Chat to your HubSpot CMS for private content
 
 ## Prerequisites
 * You need a Weavy account (https://get.weavy.io/sign-in) with an environment and an API key
