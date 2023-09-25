@@ -1,19 +1,19 @@
-# Onboarding: Add Chat to your HubSpot CMS
+# Onboarding: Add Feeds to your HubSpot CMS
 
 ## Prerequisites
 * You need a Weavy account (https://get.weavy.io/sign-in) with an environment and an API key
 * HubSpot CLI configured (https://developers.hubspot.com/docs/cms/guides/getting-started-with-local-development)
 * For private content and/or SSO, see https://knowledge.hubspot.com/website-pages/require-member-registration-to-access-private-content and https://knowledge.hubspot.com/website-pages/set-up-single-sign-on-sso-to-access-private-content
 
-## Get started with Chat
+## Get started with Feeds
 > **Note:** Ensure you're running <code>hs watch</code> in the background so your files are automatically uploaded to your HubSpot site.
 * Start a new Terminal in your IDE (VS Code, etc.)
-* Go to your modules folder and add a new module: <code>hs create module weavy-chat</code>, label it <code>Weavy Chat</code>
-* Select `Page` as the type of content this module be used in
+* Go to your modules folder and add a new module: <code>hs create module weavy-feeds</code>, label it <code>Weavy Feeds</code>
+* Select `Page` as the type of content this module will be used in
 * Select `N` for is this a global module
 * After the folder and files have been created; in the <code>meta.json</code> file, make sure <code>is_available_for_new_content</code> is set to <code>true</code>
 * Clear the `fields.json` file, leaving just the brackets `[ ]`
-* Go to your environment on your Weavy account and initiate the **Get Started with Chat** wizard
+* Go to your environment on your Weavy account and initiate the **Get Started with Feeds** wizard
 * Follow all the steps in the wizard
 * In the last step, we're using the CDN version of our JS UI Kit;
 * Copy and paste the three code snippets into the `module.html` file
@@ -29,16 +29,16 @@ In the end, your <code>module.html</code> file should look similar to this;
   // url to your Weavy environment
   Weavy.url = "https://86eeca5ba49343fe811d5c5242dc74b9.weavy.io";
   // token factory that returns the access_token for your demo user
-  Weavy.tokenFactory = async () => "wyu_WGFbxsKHigQuKZ4BWZVWFA5MY1IhTj3bYNsy";
+  Weavy.tokenFactory = async () => "{ YOUR ACCESS TOKEN }";
 </script>
 {% end_require_js %}
 
-<div id="chat-container" style="height:600px;"></div>
+<div id="feeds-container" style="height:600px;"></div>
 
 {% require_js position="foot" %}
 <script>
-    const chat = new Chat({ uid: "demochat" });
-    document.getElementById("chat-container").append(chat);
+    const chat = new Posts({ uid: "demofeeds" });
+    document.getElementById("feeds-container").append(chat);
 </script>
 {% end_require_js %}
 ```
