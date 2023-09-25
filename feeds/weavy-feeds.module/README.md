@@ -27,7 +27,7 @@ In the end, your <code>module.html</code> file should look similar to this;
 <script src="https://cdn.jsdelivr.net/npm/@weavy/dropin-js@17.2.1/dist/weavy.js" crossorigin="anonymous"></script>
 <script>
   // url to your Weavy environment
-  Weavy.url = "https://86eeca5ba49343fe811d5c5242dc74b9.weavy.io";
+  Weavy.url = "{ YOUR WEAVY URL }";
   // token factory that returns the access_token for your demo user
   Weavy.tokenFactory = async () => "{ YOUR ACCESS TOKEN }";
 </script>
