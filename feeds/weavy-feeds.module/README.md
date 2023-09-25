@@ -42,6 +42,6 @@ In the end, your <code>module.html</code> file should look similar to this;
 </script>
 {% end_require_js %}
 ```
-* Now create a new web page, and if you've done everything right, you should see a Wevy Chat module that you can drag and drop into your page, and a chat should be rendered
+* Now create a new web page, and if you've done everything right, you should see a Wevy Feeds module that you can drag and drop into your page, and a feed should be rendered
 
 > You can use the files in this folder as a reference - your files after creating your module and copying the code snippets to your module should look the same
