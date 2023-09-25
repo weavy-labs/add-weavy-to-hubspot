@@ -9,11 +9,11 @@
 </script>
 {% end_require_js %}
 
-<div id="chat-container" style="height:600px;"></div>
+<div id="files-container" style="height:600px;"></div>
 
 {% require_js position="foot" %}
 <script>
-    const chat = new Chat({ uid: "demochat" });
-    document.getElementById("chat-container").append(chat);
+    const files = new Files({ uid: "demofiles" });
+    document.getElementById("filescontainer").append(files);
 </script>
 {% end_require_js %}
