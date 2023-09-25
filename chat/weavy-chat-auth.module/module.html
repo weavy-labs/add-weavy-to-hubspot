@@ -3,7 +3,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@weavy/dropin-js@17.2.1/dist/weavy.js" crossorigin="anonymous"></script>
 
 <script>
-    Weavy.url = "https://86eeca5ba49343fe811d5c5242dc74b9.weavy.io";
+    Weavy.url = "{ YOUR WEAVY URL }";
     fetch("https://www.weavylabs.com/_hcms/api/weavy-token?apptype=chat&appid={{ module.app_id }}&uid={{ contact.email }}{% if contact.firstname!=null %}&firstname={{ contact.firstname }}&lastname={{ contact.lastname }}{% else %}&firstname={{ contact.email }}&lastname={% endif %}&email={{ contact.email }}", 
     {
       'method': 'GET',
