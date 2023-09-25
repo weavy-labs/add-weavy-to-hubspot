@@ -37,8 +37,8 @@ In the end, your <code>module.html</code> file should look similar to this;
 
 {% require_js position="foot" %}
 <script>
-    const chat = new Posts({ uid: "demofeeds" });
-    document.getElementById("feeds-container").append(chat);
+    const feeds = new Posts({ uid: "demofeeds" });
+    document.getElementById("feeds-container").append(feeds);
 </script>
 {% end_require_js %}
 ```
