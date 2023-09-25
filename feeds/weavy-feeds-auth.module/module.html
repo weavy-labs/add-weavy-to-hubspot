@@ -1,0 +1,27 @@
+<!-- module html  -->
+{% require_js position="head" %}
+<script src="https://cdn.jsdelivr.net/npm/@weavy/dropin-js@17.2.1/dist/weavy.js" crossorigin="anonymous"></script>
+
+<script>
+    Weavy.url = "{ YOUR WEAVY URL }";
+    fetch("https://www.weavylabs.com/_hcms/api/weavy-token?apptype=chat&appid={{ module.app_id }}&uid={{ contact.email }}{% if contact.firstname!=null %}&firstname={{ contact.firstname }}&lastname={{ contact.lastname }}{% else %}&firstname={{ contact.email }}&lastname={% endif %}&email={{ contact.email }}", 
+    {
+      'method': 'GET',
+      'headers': {
+          'Content-Type': 'application/json',
+      }
+    })
+      .then(response => response.text())
+      .then(result => { Weavy.tokenFactory = async () => result; })
+      .catch(error => console.log('error', error));
+  
+</script>
+{% end_require_js %}
+
+<div id="chat-{{ module.app_id }}" style="height:600px;"></div>
+
+{% require_js position="foot" %}
+<script>
+      document.getElementById("chat-{{ module.app_id }}").append(new Chat({ uid: '{{ module.app_id }}' }));
+</script>
+{% end_require_js %}

@@ -1,0 +1,19 @@
+<!-- module html  -->
+{% require_js position="head" %}
+<script src="https://cdn.jsdelivr.net/npm/@weavy/dropin-js@17.2.1/dist/weavy.js" crossorigin="anonymous"></script>
+<script>
+  // url to your Weavy environment
+  Weavy.url = "{ YOUR WEAVY URL HERE }";
+  // token factory that returns the access_token for your demo user
+  Weavy.tokenFactory = async () => "{ YOU ACCESS TOKEN HERE }";
+</script>
+{% end_require_js %}
+
+<div id="chat-container" style="height:600px;"></div>
+
+{% require_js position="foot" %}
+<script>
+    const chat = new Chat({ uid: "demochat" });
+    document.getElementById("chat-container").append(chat);
+</script>
+{% end_require_js %}
