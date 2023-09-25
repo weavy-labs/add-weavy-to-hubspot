@@ -15,9 +15,9 @@ Each folder (chat, feeds, file-sharing) contains two folders containing HubSpot 
 The serverless function for authentication is needed to integrate HubSpot CMS and Weavy to get access tokens for your signed-in users and can be used by all Weavy features.
 
 ## For more information
-For more information about Weavy: https://www.weavy.com/docs
+* Check out our [Weavy Docs](https://www.weavy.com/docs)
+* Make sure to join our incredible community and connect with fellow enthusiasts and the Weavy team on [Discord](https://www.weavy.com/discord)
+* [HubSpot CMS Developer](https://developers.hubspot.com/docs/cms)
 
-For more information about HubSpot CMS: https://developers.hubspot.com/docs/cms
 
-Make sure to join our incredible community and connect with fellow enthusiasts and the Weavy team on Discord: https://www.weavy.com/discord
   
