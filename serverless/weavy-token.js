@@ -41,7 +41,7 @@ function initApp(userUid, appType, appID) {
 exports.main = (context, sendResponse) => {
 
   // Fetch the params to create / update the user
-  let userUid = String(context.params.uid).trim();;
+  let userUid = String(context.params.uid).trim();
   let userfirstName = String(context.params.firstname).trim();
   let userlastName = String(context.params.lastname).trim();
   let useremail = String(context.params.email).trim();
@@ -54,9 +54,9 @@ exports.main = (context, sendResponse) => {
   let wyToken =  String(context.headers.Cookie)?.split("; ").find((row) => row.startsWith("wytoken="))?.split("=")[1];
 
   // If our wyToken cookie is empty, we need set it for the first time and create / update user.
-  if (userUid != null && wyToken == null) {
-
+  if ((userUid != 'undefined' || userUid !=null) && (wyToken == 'undefined' || wyToken == null)) {
     // Using the PUT method to update the user, if the user doesn't exist it will be created.
+
     let user = fetch (WEAVY_URL + '/api/users/' + userUid, {
       method: 'PUT',
       headers: {
@@ -72,32 +72,35 @@ exports.main = (context, sendResponse) => {
     });
 
     user.then((response) => {
-
-      // Init the app and add the user as a member
+      
+       // Init the app and add the user as a member
       let app =  initApp(userUid, appType, appID);
       app.then((response) => {
-
-        // Get user token
-        let tokenPromise = getUserToken(userUid);
-        tokenPromise.then((response) => {
-          const jsonPromise = response.json();
-          jsonPromise.then((json) => {
-            sendResponse(
-              {
-                body : json.access_token,
-                statusCode : 200,
-                headers : {
-                  // Set the wyToken cookie, we don't want to refresh our token for every call
-                  'Set-Cookie': 'wytoken=' + json.access_token + '; Path=/; Max-Age=2592000;'
+        if (response.status==500) {
+          sendResponse({body: 'Failed to create app', statusCode: 500});
+        } else {
+          // Get user token
+          let tokenPromise = getUserToken(userUid);
+          tokenPromise.then((response) => {
+            const jsonPromise = response.json();
+            jsonPromise.then((json) => {
+              sendResponse(
+                {
+                  body : json.access_token,
+                  statusCode : 200,
+                  headers : {
+                    // Set the wyToken cookie, we don't want to refresh our token for every call
+                    'Set-Cookie': 'wytoken=' + json.access_token + '; Path=/; Max-Age=2592000;'
+                  }
                 }
-              }
-            );
+              );
+            });
           });
-        });
+        }
       });
     });
   } else {
-    if (userUid == null) {
+    if (userUid == 'undefined' || userUid ==null) {
       sendResponse({body: 'No UID passed', statusCode: 400});
     } else {
       let app =  initApp(userUid, appType, appID);
@@ -109,8 +112,10 @@ exports.main = (context, sendResponse) => {
               statusCode : 200
             }
           );
+        } else if (response.status==500) {
+          sendResponse({body: 'Failed to create app', statusCode: 500});
         } else {
-          // If response is not 200 - the token has expired and we need to get a new.
+          // If response is not 200 or 500 - the token has expired and we need to get a new.
           let tokenPromise = getUserToken(userUid);
           tokenPromise.then((response) => {
             const jsonPromise = response.json();
