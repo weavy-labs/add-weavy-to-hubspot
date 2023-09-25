@@ -15,6 +15,7 @@ This serverless function will communicate with your Weavy API and;
 3. Name the JS file `weavy-token`
 4. Set the HTTP method to `GET`
 5. Set the portion part of the URL to `weavy-token`
-6. 
+6. Copy and paste the code from the `weavy-token.js` file is in this repo
+7. Replace `
 
 
