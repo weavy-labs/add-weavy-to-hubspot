@@ -15,7 +15,9 @@
 * Select `Page` as the type of content this module be used in
 * Select `N` for is this a global module
 * After the folder and files have been created, in the `meta.json` file, make sure `is_available_for_new_content` is set to `true`
-* Copy the contents of the `fields.json` file into your module - we're adding one text field to set a unique ID for the chat you're creating.
+* Copy the contents of the `fields.json` file into your module
+  * We're adding one text field to set a unique ID for the chat you're creating
+  * This field enables you to publish different pages using the same module, but by setting unique app IDs, you can have private chat rooms on each page
 * Copy the contents of the `module.html` file into your module and change the `{ YOUR WEAVY URL}` in the code to the environment URL you have in your Weavy account
   * The code is using the HubL variable `{{ contact.email }}` to get the email of the logged-in user (required)
 * Now create a new web page with Control audience access for the page set to Private; if you've done everything right, you should see a Wevy Chat module that you can drag and drop into your page, and a chat should be rendered
