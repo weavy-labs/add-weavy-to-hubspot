@@ -13,7 +13,7 @@ The features from Weavy come to life when you add them to pages in your HubSpot 
 
 ## Modules
 Each folder (chat, feeds, file-sharing) contains two folders containing HubSpot CMS modules;
-1) **Onboarding:** Getting started with the feature (chat, feeds, or file-sharing) using our onboarding wizard
+1) **Onboarding:** Getting started with the feature (chat, feeds, or file-sharing) using our onboarding wizard, rendering the feature with a static user.
 2) **Authentication:** Create a proper integration between HubSpot CMS and Weavy for access tokens to create a real-time community experience for your signed-in users.
 
 ## Serverless function
