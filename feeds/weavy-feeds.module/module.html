@@ -9,11 +9,11 @@
 </script>
 {% end_require_js %}
 
-<div id="chat-container" style="height:600px;"></div>
+<div id="feeds" style="height:600px;"></div>
 
 {% require_js position="foot" %}
 <script>
-    const chat = new Chat({ uid: "demochat" });
-    document.getElementById("chat-container").append(chat);
+    const feeds = new Posts({ uid: "demofeeds" });
+    document.getElementById("feeds-container").append(feeds);
 </script>
 {% end_require_js %}
