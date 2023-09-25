@@ -16,6 +16,7 @@ The serverless function for authentication is needed to integrate HubSpot CMS an
 
 ## For more information
 For more information about Weavy: https://www.weavy.com/docs
+
 For more information about HubSpot CMS: https://developers.hubspot.com/docs/cms
 
 Make sure to join our incredible community and connect with fellow enthusiasts and the Weavy team on Discord: https://www.weavy.com/discord
