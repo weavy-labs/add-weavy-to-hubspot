@@ -1,14 +1,14 @@
 [ 
   {
-  "id" : "app_id",
-  "name" : "app_id",
-  "display_width" : null,
-  "label" : "App ID",
-  "required" : true,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text"
-}
+    "id" : "app_id",
+    "name" : "app_id",
+    "display_width" : null,
+    "label" : "App ID",
+    "required" : true,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }
 ]
