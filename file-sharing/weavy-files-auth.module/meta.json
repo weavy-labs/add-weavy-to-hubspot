@@ -6,14 +6,12 @@
   "help_text": "",
   "host_template_types": [
     "PAGE"
-  ],    
-  
-    "placeholder" : {
+  ], 
+  "placeholder" : {
     "show_module_icon" : true,
     "title" : "File sharing",
     "description" : "Placeholder for the Weavy File Sharing UI."
   },
-
   "js_assets": [],
   "other_assets": [],
   "smart_type": "NOT_SMART",
