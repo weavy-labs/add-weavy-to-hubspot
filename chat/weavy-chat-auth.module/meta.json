@@ -6,7 +6,12 @@
   "help_text": "",
   "host_template_types": [
     "PAGE"
-  ],
+  ],  
+  "placeholder" : {
+    "show_module_icon" : true,
+    "title" : "Chat",
+    "description" : "Placeholder for the Weavy Chat UI."
+  },
   "js_assets": [],
   "other_assets": [],
   "smart_type": "NOT_SMART",
