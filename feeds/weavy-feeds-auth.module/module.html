@@ -4,7 +4,7 @@
 
 <script>
     Weavy.url = "{ YOUR WEAVY URL }";
-    fetch("https://www.weavylabs.com/_hcms/api/weavy-token?apptype=posts&appid={{ module.app_id }}&uid={{ contact.email }}{% if contact.firstname!=null %}&firstname={{ contact.firstname }}&lastname={{ contact.lastname }}{% else %}&firstname={{ contact.email }}&lastname={% endif %}&email={{ contact.email }}", 
+    fetch("{ HUBSPOT SITE URL }/_hcms/api/weavy-token?apptype=posts&appid={{ module.app_id }}&uid={{ contact.email }}{% if contact.firstname!=null %}&firstname={{ contact.firstname }}&lastname={{ contact.lastname }}{% else %}&firstname={{ contact.email }}&lastname={% endif %}&email={{ contact.email }}", 
     {
       'method': 'GET',
       'headers': {
