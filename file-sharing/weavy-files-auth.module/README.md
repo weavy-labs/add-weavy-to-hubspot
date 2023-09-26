@@ -15,6 +15,14 @@
 * Select `Page` as the type of content this module be used in
 * Select `N` for is this a global module
 * After the folder and files have been created, in the `meta.json` file, make sure `is_available_for_new_content` is set to `true`
+* Add the following snippet to your `meta.json` file; this renders a placeholder when in edit mode
+```json
+  "placeholder" : {
+    "show_module_icon" : true,
+    "title" : "File sharing",
+    "description" : "Placeholder for the Weavy File Sharing UI."
+  }
+```
 * Copy the contents of the `fields.json` file into your module
   * We're adding one text field to set a unique ID for the file-sharing folder you're creating
   * This field enables you to publish different pages using the same module, but by setting unique app IDs, you can have different file-sharing folders on each page
